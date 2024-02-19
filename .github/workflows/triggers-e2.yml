@@ -1,0 +1,13 @@
+name: "triggers - exercise 2"
+
+on:
+  push:
+  pull_request:
+    branches: 
+    - main
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "I check that the code compiles correctly"
