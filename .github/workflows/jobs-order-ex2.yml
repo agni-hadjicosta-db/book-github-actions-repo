@@ -9,6 +9,7 @@ jobs:
     steps:
       - run: |
           dayOfWeek=$(date +%u) #calculate the day of the week
+          echo "$dayOfWeek"
           if ($dayOfWeek > 5)
           then
             exit 1
