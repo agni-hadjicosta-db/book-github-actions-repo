@@ -1,0 +1,29 @@
+name: Jobs - order ex2
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          dayOfWeek=$(date +%u) #calculate the day of the week
+          if ($dayOfWeek > 5)
+          then
+            exit 1
+          fi
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    if: failure()
+    steps:
+      - run: echo "something went wrong"
+
+  job3:
+    runs-on: ubuntu-latest
+    needs: job2
+    if: always()
+    steps:
+      - run: echo " I am running whatever happens"
+          
