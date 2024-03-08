@@ -1,0 +1,15 @@
+name: Jobs - order ex3
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "hello job2" > test.txt # writes in test.txt
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - run: cat test.txt #reads the content of test/txt and displays it in the console
