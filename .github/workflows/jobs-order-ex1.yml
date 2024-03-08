@@ -1,0 +1,25 @@
+name: Jobs - order ex1
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello "
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - run: echo "how "
+
+  job3:
+    runs-on: ubuntu-latest
+    needs: [job1, job2]
+    steps:
+      - run: echo "are "
+  job4:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "you? "      
